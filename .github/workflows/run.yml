@@ -171,7 +171,7 @@ jobs:
           KEYWORD1="steamserver.net"
           KEYWORD2="full:steamcdn-a.akamaihd.net"          
           NEW_TEXT1="steamserver.net @cn"
-          NEW_TEXT1="full:steamcdn-a.akamaihd.net @cn"
+          NEW_TEXT2="full:steamcdn-a.akamaihd.net @cn"
 
           cp $FILE_PATH "${FILE_PATH}.bak"
           
