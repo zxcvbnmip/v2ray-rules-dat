@@ -181,7 +181,7 @@ jobs:
             }
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
-          cp $FILE_PATH steam.txt
+          cp $FILE_PATH
           
       - name: Build geosite.dat file
         run: |
