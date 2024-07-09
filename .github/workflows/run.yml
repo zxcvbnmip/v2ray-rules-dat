@@ -164,6 +164,23 @@ jobs:
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > ./community/data/win-extra
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > win-extra.txt
 
+
+      - name: replace steamsever
+        run: |
+          FILE_PATH=./community/data/steam
+          KEYWORD="steamserver.net"
+          NEW_TEXT="steamserver.net @cn"
+
+          cp $FILE_PATH "${FILE_PATH}.bak"
+          
+          awk -v keyword="$KEYWORD" -v new_text="$NEW_TEXT" '{
+            if ($0 ~ keyword) {
+              print new_text
+            } else {
+              print $0
+            }
+          }' "${FILE_PATH}.bak" > $FILE_PATH
+          
       - name: Build geosite.dat file
         run: |
           cd custom || exit 1
