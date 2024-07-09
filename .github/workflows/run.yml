@@ -168,29 +168,35 @@ jobs:
       - name: replace steamsever
         run: |
           FILE_PATH=./community/data/steam
-          KEYWORD1="steamserver.net"
-          KEYWORD2="full:steamcdn-a.akamaihd.net"          
-          NEW_TEXT1="steamserver.net @cn"
-          NEW_TEXT2="full:steamcdn-a.akamaihd.net @cn"
+          KEYWORD="steamserver.net"     
+          NEW_TEXT="steamserver.net @cn"
 
           cp $FILE_PATH "${FILE_PATH}.bak"
           
-          awk -v keyword="$KEYWORD1" -v new_text="$NEW_TEXT1" '{
+          awk -v keyword="$KEYWORD" -v new_text="$NEW_TEXT" '{
             if ($0 ~ keyword1) {
-              print new_text1
-            } else {
-              print $0
-            }
-          }' "${FILE_PATH}.bak" > $FILE_PATH
-
-          awk -v keyword="$KEYWORD2" -v new_text="$NEW_TEXT2" '{
-            if ($0 ~ keyword2) {
-              print new_text2
+              print new_text
             } else {
               print $0
             }
           }' "${FILE_PATH}.bak" > $FILE_PATH
           
+      - name: replace steamcdn-a.akamaihd.net
+        run: |
+          FILE_PATH=./community/data/steam
+          KEYWORD="full:steamcdn-a.akamaihd.net"          
+          NEW_TEXT="full:steamcdn-a.akamaihd.net @cn"
+
+          cp $FILE_PATH "${FILE_PATH}.bak"
+          
+          awk -v keyword="$KEYWORD" -v new_text="$NEW_TEXT" '{
+            if ($0 ~ keyword) {
+              print new_text
+            } else {
+              print $0
+            }
+          }' "${FILE_PATH}.bak" > $FILE_PATH
+
           cat $FILE_PATH
           
       - name: Build geosite.dat file
