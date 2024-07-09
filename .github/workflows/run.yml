@@ -174,7 +174,7 @@ jobs:
           cp $FILE_PATH "${FILE_PATH}.bak"
           
           awk -v keyword="$KEYWORD" -v new_text="$NEW_TEXT" '{
-            if ($0 ~ keyword1) {
+            if ($0 ~ keyword) {
               print new_text
             } else {
               print $0
