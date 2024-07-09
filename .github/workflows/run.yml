@@ -181,7 +181,7 @@ jobs:
             }
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
-          cp $FILE_PATH
+          cat $FILE_PATH
           
       - name: Build geosite.dat file
         run: |
