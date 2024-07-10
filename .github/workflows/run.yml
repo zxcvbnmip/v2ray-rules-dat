@@ -35,6 +35,12 @@ jobs:
         with:
           ref: hidden
 
+      - name: checkout the "custom" branch
+        uses: action/checkout@v4
+        with:
+          ref: custom
+          path: cosmos
+
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v4
         with:
@@ -198,6 +204,10 @@ jobs:
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
           cat $FILE_PATH
+
+      - name: Copy custom files to data
+        run: |
+          cp ./cosmos/* ./community/data/
           
       - name: Build geosite.dat file
         run: |
