@@ -29,6 +29,16 @@ jobs:
           echo "WIN_UPDATE=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/update.txt" >> $GITHUB_ENV
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
+        
+      - name: Checkout the "custom" branch of this repo
+        uses: actions/checkout@v4
+        with:
+          ref: custom
+
+      - name: show custom files
+        run: |
+          mkdir -p ./community/data
+          cp * ./community/data
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v4
@@ -198,6 +208,7 @@ jobs:
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
           cat $FILE_PATH
+          cat ./community/data/jmcomic
           
       - name: Build geosite.dat file
         run: |
