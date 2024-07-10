@@ -38,7 +38,8 @@ jobs:
       - name: show custom files
         run: |
           mkdir -p ./community/data
-          ls -al
+          find . -maxdepth 1 -type 1 -exec mv {} ./community/data \;
+          ls ./community/data -al
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v4
