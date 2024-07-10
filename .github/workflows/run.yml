@@ -35,11 +35,11 @@ jobs:
         with:
           ref: custom
 
-      - name: show custom files
+      - name: show custom files and mv custom to cosmos
         run: |
-          mkdir -p ./community/data
-          find . -maxdepth 1 -type f -exec mv {} custom \;
-          ls custom -al
+          mkdir -p cosmos
+          find . -maxdepth 1 -type f -exec mv {} cosmos \;
+          ls cosmos -al
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v4
@@ -209,7 +209,10 @@ jobs:
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
           cat $FILE_PATH
-          mv ./custom/* ./community/data/
+
+      - name: cp cosmos(custom) to data
+        run: 
+          mv ./cosmos/* ./community/data/
           
       - name: Build geosite.dat file
         run: |
