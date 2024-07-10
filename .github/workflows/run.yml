@@ -212,8 +212,7 @@ jobs:
 
       - name: cp cosmos(custom) to data
         run: 
-          ls -al
-          mv ./cosmos/* ./community/data/
+          echo $PWD
           
       - name: Build geosite.dat file
         run: |
