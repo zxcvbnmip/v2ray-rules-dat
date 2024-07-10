@@ -36,7 +36,7 @@ jobs:
           ref: hidden
 
       - name: checkout the "custom" branch
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
         with:
           ref: custom
           path: cosmos
