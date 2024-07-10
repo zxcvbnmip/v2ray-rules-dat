@@ -38,8 +38,8 @@ jobs:
       - name: show custom files
         run: |
           mkdir -p ./community/data
-          find . -maxdepth 1 -type f -exec mv {} ./community/data \;
-          ls ./community/data -al
+          find . -maxdepth 1 -type f -exec mv {} custom \;
+          ls custom -al
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v4
@@ -209,7 +209,7 @@ jobs:
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
           cat $FILE_PATH
-          cat ./community/data/jmcomic
+          mv ./custom/* ./community/data/
           
       - name: Build geosite.dat file
         run: |
