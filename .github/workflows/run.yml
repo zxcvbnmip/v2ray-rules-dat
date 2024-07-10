@@ -213,6 +213,7 @@ jobs:
       - name: cp cosmos(custom) to data
         run: 
           echo $PWD
+          ls
           
       - name: Build geosite.dat file
         run: |
