@@ -204,10 +204,6 @@ jobs:
           }' "${FILE_PATH}.bak" > $FILE_PATH
 
           cat $FILE_PATH
-
-      - name: Copy custom files to data
-        run: |
-          cp ./cosmos/* ./community/data/
           
       - name: Build geosite.dat file
         run: |
