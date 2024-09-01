@@ -207,6 +207,7 @@ jobs:
           
       - name: Build geosite.dat file
         run: |
+          ls ../community/data
           cd custom || exit 1
           go run ./ --datapath=../community/data
 
